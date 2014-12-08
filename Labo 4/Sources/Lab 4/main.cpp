@@ -47,12 +47,12 @@ void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& r
 
 void PlusRapideChemin(const string& depart, const string& arrivee, const string& via, RoadNetwork& rn) {
     // Utilisation du warpper pour le chemain le plus rapide
-    RoadNetworkWrapperFastest wp(rn);
+    RoadNetworkWrapperTime wp(rn);
     
     // 2 Djekstra un depuis le départ et un depuis via
     // le chemain complet seras la réunion du DjekstraSP depart -> via et Djekstra via -> arrivee
-    ASD2::DijkstraSP<RoadNetworkWrapperFastest> sp1(wp, rn.cityIdx[depart]);
-    ASD2::DijkstraSP<RoadNetworkWrapperFastest> sp2(wp, rn.cityIdx[via]);
+    ASD2::DijkstraSP<RoadNetworkWrapperTime> sp1(wp, rn.cityIdx[depart]);
+    ASD2::DijkstraSP<RoadNetworkWrapperTime> sp2(wp, rn.cityIdx[via]);
     
     // depart -> via
     auto path = sp1.PathTo(rn.cityIdx[via]);
