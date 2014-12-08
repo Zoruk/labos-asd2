@@ -74,9 +74,8 @@ namespace ASD2 {
         Edges edgeTo;
         Weights distanceTo;
     };
-    
+
     // Classe a mettre en oeuvre au labo 4. S'inspirer de BellmaFordSP pour l'API
-    
     template<typename GraphType>
     class DijkstraSP : public ShortestPath<GraphType> {
     public:
@@ -84,7 +83,7 @@ namespace ASD2 {
         typedef typename BASE::Edge Edge;
         typedef typename BASE::Weight Weight;
 
-        PriorityQueue<int, Weight> queue;
+        PriorityQueue<Weight> queue;
         DijkstraSP(const GraphType& g, int v) : queue(g.V(), std::numeric_limits<Weight>::max())  {
             /* A IMPLEMENTER */
             this->edgeTo.reserve(g.V());
