@@ -141,9 +141,9 @@ public:
 /*
  * Wrapper qui a comme poid la longeur de la route
  */
-class RoadNetworkWrapperShortest : public RoadNetworkDigraphWrapper {
+class RoadNetworkWrapperLength : public RoadNetworkDigraphWrapper {
 public:
-    RoadNetworkWrapperShortest(const RoadNetwork& n) : RoadNetworkDigraphWrapper(n) { }
+    RoadNetworkWrapperLength(const RoadNetwork& n) : RoadNetworkDigraphWrapper(n) { }
     
     double getWeight(const RoadNetwork::Road& road) const override {
         return road.lenght;
@@ -153,9 +153,9 @@ public:
 /*
  * Wrapper qui a comme poid le temps de trajet
  */
-class RoadNetworkWrapperFastest : public RoadNetworkDigraphWrapper {
+class RoadNetworkWrapperTime : public RoadNetworkDigraphWrapper {
 public:
-    RoadNetworkWrapperFastest(const RoadNetwork& n) : RoadNetworkDigraphWrapper(n) { }
+    RoadNetworkWrapperTime(const RoadNetwork& n) : RoadNetworkDigraphWrapper(n) { }
     
     // Vitesse sur les autoroutes
     const double MOTORWAY_SPEED = 120.;

@@ -24,10 +24,10 @@ using namespace std;
 void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& rn) {
     
     // Utilisation de notre wrapper pour le chemain le plus court
-    RoadNetworkWrapperShortest wp(rn);
+    RoadNetworkWrapperLength wp(rn);
     
     // Applicaiton de Djekstra Shortest Path sur le lieu de depart
-    ASD2::DijkstraSP<RoadNetworkWrapperShortest> sp(wp, rn.cityIdx[depart]);
+    ASD2::DijkstraSP<RoadNetworkWrapperLength> sp(wp, rn.cityIdx[depart]);
     double dist = 0;
     
     // Itere sur le chemain jusqu''à l'arrivee
