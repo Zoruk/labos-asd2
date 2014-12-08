@@ -56,7 +56,7 @@ namespace ASD2 {
         // Renvoie la liste ordonnee des arcs constituant un chemin le plus court du
         // sommet source à v.
         Edges PathTo(int v) {
-            /* A IMPLEMENTER */
+            // Genere un vacteur des edges pour acceder au sommet v
             Edges es;
             if (distanceTo[v] == std::numeric_limits<Weight>::max()) {
                 //std::cout << "No path to " << v << std::endl;
@@ -66,6 +66,7 @@ namespace ASD2 {
                 es.push_back(edgeTo[v]);
                 v = edgeTo[v].From();
             }
+            // Les sommet sont dans l'ordre inverse
             std::reverse(es.begin(), es.end());
             return es;
         }
@@ -83,34 +84,46 @@ namespace ASD2 {
         typedef typename BASE::Edge Edge;
         typedef typename BASE::Weight Weight;
 
+        // La queue de priorite avec degreaseKey
         PriorityQueue<Weight> queue;
         DijkstraSP(const GraphType& g, int v) : queue(g.V(), std::numeric_limits<Weight>::max())  {
-            /* A IMPLEMENTER */
+            // Prépare les vecteur edgeTo et distanceTo
             this->edgeTo.reserve(g.V());
             this->distanceTo.assign(g.V(), std::numeric_limits<Weight>::max());
-           
+        
+            // Initialise la distance et l'edge pour le acceder de debut->debut
             this->edgeTo[v] = Edge(v,v,0);
             this->distanceTo[v] = 0;
             
-            /*g.forEachVertex([this](const int e) {
+            // Pas nessaire la pq est initialisée dans le constructeur 
+            // (serrais utile si l on utilise l autre constructeur)
+            /*
+            g.forEachVertex([this](const int e) {
                 queue.insert(e, std::numeric_limits<Weight>::max());
-            });*/
-            
+            });
+            */
+       
+            // pour acceder a lui meme la distance est de 0
             queue.decreaseKey(v, 0);
+
+            // Tant qu'il reste des edge a traiter on relax tout les edge adjacent
+            // au sommet le plus proche
             while (!queue.isEmpty()) {
                 int v = queue.pop().data;
-                
+
                 g.forEachAdjacentEdge(v, [this](const Edge& e) {
                     relax(e);
                 });
             }
         }
+
     private:
         void relax(const Edge& e) {
+            // Le relay est identique a celui de BellmanFord on ajoute juste le
+            // decreaseKey de la pq
             int v = e.From(), w = e.To();
             Weight distThruE = this->distanceTo[v] + e.Weight();
-            //std::cout << "distThruE" << distThruE <<
-            //        " v" << v << " w" << w << std::endl;
+
             if(this->distanceTo[w] > distThruE) {
                 this->distanceTo[w] = distThruE;
                 this->edgeTo[w] = e;
@@ -120,21 +133,20 @@ namespace ASD2 {
     };
 
     // Algorithme de BellmanFord.
-    
     template<typename GraphType> // Type du graphe pondere oriente a traiter
                                  // GraphType doit se comporter comme un
                                  // EdgeWeightedDiGraph et definir forEachEdge(Func),
                                  // ainsi que le type GraphType::Edge. Ce dernier doit
                                  // se comporter comme ASD2::DirectedEdge, c-a-dire definir From(),
                                  // To() et Weight()
-    
+
     class BellmanFordSP : public ShortestPath<GraphType> {
-    
+
     private:
         typedef ShortestPath<GraphType> BASE;
         typedef typename BASE::Edge Edge;
         typedef typename BASE::Weight Weight;
-        
+
         // Relachement de l'arc e
         void relax(const Edge& e) {
             int v = e.From(), w = e.To();

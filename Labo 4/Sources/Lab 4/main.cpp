@@ -20,7 +20,6 @@ using namespace std;
 
 // Calcule et affiche le plus court chemin de la ville depart a la ville arrivee
 // en passant par le reseau routier rn. Le critere a optimiser est la distance.
-
 void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& rn) {
     
     // Utilisation de notre wrapper pour le chemain le plus court

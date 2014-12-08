@@ -11,7 +11,8 @@
 #include <cassert>
 
 
-// Queue de priorité pour des int allent de 0 a N
+// Queue de priorité pour des int allent de 0 a N (N variable)
+// La classe est implementee selon les docs fourni avec le labo
 template<typename KEY>
 class PriorityQueue {
     private:
