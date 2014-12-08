@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../Lab 4/EdgeWeightedDigraph.h</itemPath>
+      <itemPath>../Lab 4/EdgeWeightedGraph.h</itemPath>
+      <itemPath>../Lab 4/EdgeWeightedGraphCommon.h</itemPath>
+      <itemPath>../Lab 4/MinimumSpanningTree.h</itemPath>
+      <itemPath>PriorityQueue.h</itemPath>
+      <itemPath>../Lab 4/RoadNetwork.h</itemPath>
+      <itemPath>RoadNetworkWrappers.h</itemPath>
+      <itemPath>../Lab 4/ShortestPath.h</itemPath>
+      <itemPath>../Lab 4/UnionFind.h</itemPath>
+      <itemPath>../Lab 4/Util.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>../Lab 4/10000EWD.txt</itemPath>
+      <itemPath>../Lab 4/1000EWD.txt</itemPath>
+      <itemPath>../Lab 4/mediumEWD.txt</itemPath>
+      <itemPath>../Lab 4/reseau.txt</itemPath>
+      <itemPath>../Lab 4/tinyEWD.txt</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../Lab 4/RoadNetwork.cpp</itemPath>
+      <itemPath>../Lab 4/UnionFind.cpp</itemPath>
+      <itemPath>../Lab 4/Util.cpp</itemPath>
+      <itemPath>../Lab 4/main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>../Lab 4/Makefile</itemPath>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <commandlineTool>clang++</commandlineTool>
+        </ccTool>
+      </compileType>
+      <item path="../Lab 4/10000EWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/1000EWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedDigraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedGraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedGraphCommon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/MinimumSpanningTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/RoadNetwork.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/RoadNetwork.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/ShortestPath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/UnionFind.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/UnionFind.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/Util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/mediumEWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/reseau.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/tinyEWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PriorityQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RoadNetworkWrappers.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../Lab 4/10000EWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/1000EWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedDigraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedGraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/EdgeWeightedGraphCommon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/MinimumSpanningTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/RoadNetwork.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/RoadNetwork.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/ShortestPath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/UnionFind.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/UnionFind.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/Util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Lab 4/mediumEWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/reseau.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Lab 4/tinyEWD.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PriorityQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RoadNetworkWrappers.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

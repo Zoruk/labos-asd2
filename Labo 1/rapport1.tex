@@ -1,0 +1,56 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tablefootnote}
+
+\usepackage[frenchb]{babel}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{24cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\voffset}{-1.5cm}
+
+\title{Compression avec l'algorithme de Huffman}
+\author{Loïc Haas \& Romain Maillard}
+
+\begin{document}
+\maketitle
+%\newpage
+\section{Réalisation du code}
+La structure des classes étant imposée la réalisation du code était relativement vite faite.
+\subsection*{Amélioration possible}
+\begin{itemize}
+	\item Format du stockage de l'arbre de Huffman, par exemple le linéariser et stoker uniquement les valeur binaires des octets de chaque feuille.
+	\item Pour la décompression et compression utiliser un tableau avec comme index les valeurs valeurs binaire d'accès à chaque feuille de l'arbre.
+	\item Lors de la décompression lire plus d'information dans le buffer. Par exemple lire kilo octet par kilo octet au-lieu de le faire par octet.
+	\item Utiliser un container plus approprier que vector qui permet les suppression en tête sans devoir déplacer l’Intégralité des données en mémoire.
+\end{itemize}
+\section{Comparaison des résultats}
+\subsection*{Résultats obtenus}
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Format de fichier & Taille initiale & Taille après compression & Proportion de compression\tablefootnote{Proportion par rapport a la taille initiale par exemple si le fichier initiale fait 1024Ko et le fichier de destination fais 512Ko la proportion sera de 50\%} \\
+\hline 
+txt & 1015k & 576k & 57\% \\ 
+txt & 79o & 251o & 318\% \\ 
+bmp & 23829ko & 6381ko & 27\% \\
+jpg & 302k & 287k & 95\% \\  
+pdf & 28163o & 29250o & 103\% \\
+pdf & 13386ko & 12305ko & 91\% \\
+flac & 21329ko & 21311ko & 100\% \\
+\hline 
+\end{tabular}
+\caption{Résultats de compressions par rapport au type de fichier}
+\end{table}
+\subsection*{Discutions des résultats}
+En observant le tableau si-dessus, nous pouvons faire les remarques suivantes:
+\begin{itemize}
+\item Les fichiers utilisant déjà un algorithme de compression comme .flac, .jpg, .pdf, possède un taux de compression très faible de lors de 91 à 100%.
+\item Les fichiers standard possèdent un bon taux de compression. 57\% pour notre .txt ou 27\% pour notre .bmp.
+\item Une grande répétitivité dans un fichier permet un très grand taux de compression. Par exemple notre fichier .bmp contient une grande quantité de pixel blanc ce qui explique le taux de 27\%.
+\item Le cas du fichier texte court est très intéressant. En effet le tableau de Huffman prenant de la place dans le fichier compressé, la taille finale du fichier compressé est plus grande avec un taux de compression de 318\%
+\end{itemize}
+\end{document}
