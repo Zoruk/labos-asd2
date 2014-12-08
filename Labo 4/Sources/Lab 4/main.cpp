@@ -22,13 +22,20 @@ using namespace std;
 // en passant par le reseau routier rn. Le critere a optimiser est la distance.
 
 void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& rn) {
-    /* A IMPLEMENTER */
+    
+    // Utilisation de notre wrapper pour le chemain le plus court
     RoadNetworkWrapperShortest wp(rn);
+    
+    // Applicaiton de Djekstra Shortest Path sur le lieu de depart
     ASD2::DijkstraSP<RoadNetworkWrapperShortest> sp(wp, rn.cityIdx[depart]);
     double dist = 0;
+    
+    // Itere sur le chemain jusqu''à l'arrivee
     for (auto& a : sp.PathTo(rn.cityIdx[arrivee])) {
+        // Affiche le chemain 
         cout << rn.cities[a.From()].name << "->" << rn.cities[a.To()].name <<
                 " " << a.Weight() << "km" << endl;
+        // Calcul de la distance total (Weight = distance en km)
         dist += a.Weight();
     }
     cout << "Distance totale : " << dist << "km" << endl;
@@ -39,21 +46,30 @@ void PlusCourtChemin(const string& depart, const string& arrivee, RoadNetwork& r
 // sachant que l'on roule a 120km/h sur autoroute et 70km/h sur route normale.
 
 void PlusRapideChemin(const string& depart, const string& arrivee, const string& via, RoadNetwork& rn) {
-    /* A IMPLEMENTER */
+    // Utilisation du warpper pour le chemain le plus rapide
     RoadNetworkWrapperFastest wp(rn);
+    
+    // 2 Djekstra un depuis le départ et un depuis via
+    // le chemain complet seras la réunion du DjekstraSP depart -> via et Djekstra via -> arrivee
     ASD2::DijkstraSP<RoadNetworkWrapperFastest> sp1(wp, rn.cityIdx[depart]);
     ASD2::DijkstraSP<RoadNetworkWrapperFastest> sp2(wp, rn.cityIdx[via]);
     
+    // depart -> via
     auto path = sp1.PathTo(rn.cityIdx[via]);
+    // via -> arrivee
     auto tmp = sp2.PathTo(rn.cityIdx[arrivee]);
     
+    // merge des deux path (depart -> via -> arrivee)
     path.reserve(path.size() + tmp.size());
-    path.insert(path.end(), tmp.begin(), tmp.end());
+    path.insert(path.end(), tmp.begin(), tmp.end()); 
     double temps = 0;
+    
+    // iteraiton sur le chemain complet
     for (auto& a : path) {
+        // Affiche toutes les étapes
         cout << rn.cities[a.From()].name << "->" << rn.cities[a.To()].name 
                 << " (" << a.Weight() * 60 << "min)" << endl;
-        temps += a.Weight();
+        temps += a.Weight(); // temps total (Weight = temps en heures)
     }
     cout << "Temps total : " << temps * 60 << "min" << endl;
 }
@@ -63,15 +79,20 @@ void PlusRapideChemin(const string& depart, const string& arrivee, const string&
 // coute 7 MF.
 
 void ReseauLeMoinsCher(RoadNetwork &rn) {
-    /* A IMPLEMENTER */
-    RoadNetworkWrapperCheap wp(rn);
-    auto edges = ASD2::MinimumSpanningTree<RoadNetworkWrapperCheap>::Kruskal(wp);
+    // Utilisation du warpper qui calcul le prix des routes
+    RoadNetworkWrapperPrice wp(rn);
+    
+    // Applicaiton du MST (avec comme poid le prix de la route)
+    auto edges = ASD2::MinimumSpanningTree<RoadNetworkWrapperPrice>::Kruskal(wp);
     double sum = 0;
+    // Partour le MST
     for (const auto& edge : edges) {
         int e = edge.Either();
         int o = edge.Other(e);
-        cout << rn.cities[e].name << "<->" << rn.cities[o].name << endl;
-        sum += edge.Weight();
+        // Affiche toutes les routes
+        cout << rn.cities[e].name << "<->" << rn.cities[o].name 
+                << " (" << edge.Weight() << "M)" << endl;
+        sum += edge.Weight(); // Calcul du prix total (Weight = prix en M)
     }
     cout << "Prix total : " << sum << "M" << endl;
 }

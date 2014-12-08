@@ -102,12 +102,12 @@ public:
     }
 };
 
-class RoadNetworkWrapperCheap : public RoadNetworGraphkWrapper {
+class RoadNetworkWrapperPrice : public RoadNetworGraphkWrapper {
 public:
     const double MOTORWAY_PRICE = 15.;
     const double NORMALWAY_PRICE = 7.;
     
-    RoadNetworkWrapperCheap(const RoadNetwork& n) : RoadNetworGraphkWrapper(n) { }
+    RoadNetworkWrapperPrice(const RoadNetwork& n) : RoadNetworGraphkWrapper(n) { }
     
     double getWeight(const RoadNetwork::Road& road) const override {
         double mororway = road.motorway.Value();
