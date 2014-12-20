@@ -98,3 +98,4 @@ Temporary Items
 
 # QtCreator
 build-*/
+*.user
