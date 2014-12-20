@@ -6,7 +6,9 @@ CONFIG -= qt
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp \
-    wordgenerartor.cpp
+    wordgenerartor.cpp \
+    worddictionarystl.cpp \
+    worddictionary.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -14,5 +16,7 @@ qtcAddDeployment()
 HEADERS += \
     AVLTree.h \
     BinarySearchTree.h \
-    wordgenerartor.h
+    wordgenerartor.h \
+    worddictionarystl.h \
+    worddictionary.h
 

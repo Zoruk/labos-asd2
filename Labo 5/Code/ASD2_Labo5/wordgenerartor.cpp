@@ -69,5 +69,4 @@ void WordGenerartor::swapTwoLetter() {
         //std::cout << s << std::endl;
         words.push_back(s);
     }
-
 }
