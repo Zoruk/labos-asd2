@@ -20,8 +20,17 @@ int main()
         cout << v << " " << boolalpha << d.contain(v) << endl;
     }
 
-    WrongWord wrongword("lates", d);
-    cout << wrongword;
+    string word = "'lol'";
+    if (word[0] == '\'') {
+        word = word.substr(1, -1);
+    }
+    if (word[word.size() - 1] == '\'') {
+        word = word.substr(0, word.size() - 1);
+    }
+    cout << word << endl;
+
+    //WrongWord wrongword("lates", d);
+    //cout << wrongword;
     cout << d.size() << endl;
 
     SpellingChecker spellingchecker("Data/input_sh.txt", d);

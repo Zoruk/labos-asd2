@@ -34,7 +34,7 @@ WrongWord::WrongWord(std::string word, const WordDictionary &dico) : word(word)
 
 std::ostream& operator<<(std::ostream& out, const WrongWord& wrongWord)
 {
-    out << wrongWord.word << std::endl;
+    out << "*" << wrongWord.word << std::endl;
     for(size_t i = 0; i < wrongWord.posibilites.size(); ++i) {
         for (const auto& w: wrongWord.posibilites[i]) {
             out << i + 1 << ":" << w << std::endl;
