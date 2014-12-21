@@ -5,19 +5,16 @@
 
 #include <iostream>
 
-const char* WordGenerartor::letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ'";
+const char* WordGenerartor::letters = "abcdefghijklmnopqrstuvwxyz'";
 const WordGenerartor::size_type WordGenerartor::NBLETTERS = strlen(WordGenerartor::letters);
 
 WordGenerartor::WordGenerartor(const std::string word) : word(word), wordLength(word.length())
 {
-    removeOneLetter();
-    addOneLetter();
-    changeOneLetter();
-    swapTwoLetter();
 }
 
-void WordGenerartor::removeOneLetter()
+std::list<std::string> WordGenerartor::removeOneLetter()
 {
+    std::list<std::string> words;
     std::string s;
     s.reserve(wordLength - 1);
     for (size_type i = 0; i < wordLength; ++i) {
@@ -26,9 +23,11 @@ void WordGenerartor::removeOneLetter()
         words.push_back(s);
         s.clear();
     }
+    return words;
 }
 
-void WordGenerartor::addOneLetter() {
+std::list<std::string> WordGenerartor::addOneLetter() {
+    std::list<std::string> words;
     std::string s;
     s.reserve(wordLength + 1);
 
@@ -42,9 +41,11 @@ void WordGenerartor::addOneLetter() {
             s.clear();
         }
     }
+    return words;
 }
 
-void WordGenerartor::changeOneLetter() {
+std::list<std::string> WordGenerartor::changeOneLetter() {
+    std::list<std::string> words;
     std::string s;
     s.reserve(wordLength + 1);
 
@@ -57,9 +58,12 @@ void WordGenerartor::changeOneLetter() {
             s.clear();
         }
     }
+
+    return words;
 }
 
-void WordGenerartor::swapTwoLetter() {
+std::list<std::string> WordGenerartor::swapTwoLetter() {
+    std::list<std::string> words;
     std::string s;
     s.reserve(wordLength);
 
@@ -69,4 +73,21 @@ void WordGenerartor::swapTwoLetter() {
         //std::cout << s << std::endl;
         words.push_back(s);
     }
+    return words;
+}
+
+std::list<std::string> WordGenerartor::getAllWords() {
+    std::list<std::string> words, tmp;
+    words = removeOneLetter();
+
+    tmp = addOneLetter();
+    words.insert(words.end(), tmp.begin(), tmp.end());
+
+    tmp = changeOneLetter();
+    words.insert(words.end(), tmp.begin(), tmp.end());
+
+    tmp = swapTwoLetter();
+    words.insert(words.end(), tmp.begin(), tmp.end());
+
+    return words;
 }

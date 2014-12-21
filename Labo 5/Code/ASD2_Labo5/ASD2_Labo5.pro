@@ -8,7 +8,9 @@ QMAKE_CXXFLAGS += -std=c++11
 SOURCES += main.cpp \
     wordgenerartor.cpp \
     worddictionarystl.cpp \
-    worddictionary.cpp
+    worddictionary.cpp \
+    spellingchecker.cpp \
+    wrongword.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -18,5 +20,7 @@ HEADERS += \
     BinarySearchTree.h \
     wordgenerartor.h \
     worddictionarystl.h \
-    worddictionary.h
+    worddictionary.h \
+    spellingchecker.h \
+    wrongword.h
 

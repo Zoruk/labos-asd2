@@ -7,22 +7,20 @@
 class WordGenerartor
 {
 private:
-    std::list<std::string> words;
     const std::string word;
     typedef std::string::size_type size_type;
     const size_type wordLength;
     static const char* letters;
     static const size_type NBLETTERS;
 
-    void removeOneLetter();
-    void addOneLetter();
-    void changeOneLetter();
-    void swapTwoLetter();
-
-
 public:
     WordGenerartor(const std::string word);
-    const std::list<std::string>& getWords() { return words; }
-};
 
+    std::list<std::string> removeOneLetter();
+    std::list<std::string> addOneLetter();
+    std::list<std::string> changeOneLetter();
+    std::list<std::string> swapTwoLetter();
+
+    std::list<std::string> getAllWords();
+};
 #endif // WORDGENERARTOR_H

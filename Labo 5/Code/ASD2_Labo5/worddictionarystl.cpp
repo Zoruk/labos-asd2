@@ -12,10 +12,10 @@ void WordDictionarySTL::del(const std::string s) {
     words.erase(s);
 }
 
-bool WordDictionarySTL::contain(const std::string s) {
+bool WordDictionarySTL::contain(const std::string s) const {
     return words.count(s) != 0;
 }
 
-std::size_t WordDictionarySTL::size() {
+std::size_t WordDictionarySTL::size() const {
     return (std::size_t)words.size();
 }

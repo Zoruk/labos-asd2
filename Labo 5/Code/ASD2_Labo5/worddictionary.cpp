@@ -10,6 +10,10 @@ WordDictionary::WordDictionary()
 {
 }
 
+WordDictionary::~WordDictionary()
+{
+}
+
 void WordDictionary::load(const std::string file, bool lowercase)
 {
     std::ifstream fstream(file);
