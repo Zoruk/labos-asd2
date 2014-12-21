@@ -32,3 +32,11 @@ SpellingChecker::SpellingChecker(const std::string file, const WordDictionary& d
             wrongWords.push_back(WrongWord(word, dico));
     }
 }
+
+std::ostream& operator<<(std::ostream& out, const SpellingChecker& obj) {
+    for (const auto& item : obj.wrongWords) {
+        out << item;
+    }
+    return out;
+}
+

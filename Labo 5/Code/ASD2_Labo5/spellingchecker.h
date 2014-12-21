@@ -2,11 +2,14 @@
 #define SPELLINGCHECKER_H
 
 #include <string>
+#include <iostream>
+
 #include "wrongword.h"
 #include "worddictionary.h"
 
 class SpellingChecker
 {
+    friend std::ostream& operator<<(std::ostream& out, const SpellingChecker& obj);
 private:
     std::list<WrongWord> wrongWords;
 

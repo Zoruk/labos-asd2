@@ -26,5 +26,6 @@ int main()
 
     SpellingChecker spellingchecker("Data/input_sh.txt", d);
 
+    std::cout << spellingchecker;
     return 0;
 }
