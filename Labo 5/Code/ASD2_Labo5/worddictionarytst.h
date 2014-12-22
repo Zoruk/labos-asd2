@@ -3,11 +3,11 @@
 
 #include "worddictionary.h"
 #include "ternarysearchtrie.h"
-#include "ternarysearchtriebis.h"
+#include "ternarysearchtrie.h"
 class WordDictionaryTST : public WordDictionary
 {
 private:
-    TernarySearchTrieBis words;
+    TernarySearchTrie words;
 public:
     WordDictionaryTST();
 

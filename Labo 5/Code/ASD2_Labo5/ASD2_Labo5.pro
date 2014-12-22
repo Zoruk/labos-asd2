@@ -12,8 +12,7 @@ SOURCES += main.cpp \
     spellingchecker.cpp \
     wrongword.cpp \
     worddictionarytst.cpp \
-    ternarysearchtrie.cpp \
-    ternarysearchtriebis.cpp
+    ternarysearchtrie.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -27,6 +26,5 @@ HEADERS += \
     spellingchecker.h \
     wrongword.h \
     worddictionarytst.h \
-    ternarysearchtrie.h \
-    ternarysearchtriebis.h
+    ternarysearchtrie.h
 
