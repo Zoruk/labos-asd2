@@ -54,8 +54,6 @@ SpellingChecker::SpellingChecker(const std::string file, const WordDictionary& d
     stream << buffer;
     delete[] buffer;
 
-
-
     std::string word;
 
     while (stream >> word) {

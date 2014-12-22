@@ -1,40 +1,34 @@
 #include <iostream>
-
+#include <sstream>
+#include <fstream>
 
 #include "worddictionarystl.h"
+#include "worddictionarytst.h"
+
 #include "spellingchecker.h"
 #include "wordgenerartor.h"
 #include "wrongword.h"
+#include "ternarysearchtrie.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
-    WordGenerartor w("Super Salut");
-    WordDictionarySTL d; ;
+    WordDictionaryTST dTST;
+    WordDictionarySTL dSTL;
 
-    d.load("Data/dictionary.txt", true);
+    dTST.load("Data/dictionary.txt", true);
+    dSTL.load("Data/dictionary.txt", true);
 
-    for (std::string v : {"hello", "accordance", "Meliae", "Poney"}) {
-        cout << v << " " << boolalpha << d.contain(v) << endl;
-    }
+    cout << dTST.size() << " " << dSTL.size() << endl;
 
-    string word = "'lol'";
-    if (word[0] == '\'') {
-        word = word.substr(1, -1);
-    }
-    if (word[word.size() - 1] == '\'') {
-        word = word.substr(0, word.size() - 1);
-    }
-    cout << word << endl;
+    SpellingChecker spellingcheckerTST("Data/input_sh.txt", dTST);
+    SpellingChecker spellingcheckerSTL("Data/input_sh.txt", dSTL);
 
-    //WrongWord wrongword("lates", d);
-    //cout << wrongword;
-    cout << d.size() << endl;
+    ofstream resultTST("result_tst.txt", ofstream::trunc | ofstream::out),
+             resultSTL("result_stl.txt", ofstream::trunc | ofstream::out);
+    resultSTL << spellingcheckerSTL;
+    resultTST << spellingcheckerTST;
 
-    SpellingChecker spellingchecker("Data/input_sh.txt", d);
-
-    std::cout << spellingchecker;
     return 0;
 }
