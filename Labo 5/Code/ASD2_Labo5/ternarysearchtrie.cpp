@@ -190,3 +190,29 @@ TernarySearchTrie::Node* TernarySearchTrie::deleteElement( Node* x, const char* 
 
     return restoreBalance(x);
 }
+
+std::list<std::string> TernarySearchTrie::search(const char* str, char wildcard) const {
+    std::list<std::string> list;
+    search(root, "", list, str, wildcard);
+    return list;
+}
+
+void TernarySearchTrie::search(Node* node, std::string prev, std::list<std::string>& list, const char *str, char wildcard) const {
+    if (!node || !*str) // condition de fin de la recursion
+        return;
+
+    // Recutsion sur les branches gauche et droite
+    search(node->left, prev, list, str, wildcard);
+    search(node->right, prev, list, str, wildcard);
+
+    // on fais la recursion sur le noeud central uniquement si sa valeur est egal au caractère en cours de test ou si
+    // c'est le wildcard
+    if (*str == wildcard || node->value == *str) {
+        ++str; // On passe au caractère suivant
+        prev.push_back(node->value); // On ajoure le caractère en cours
+        if (node->isEnd && !*str) // On ajoute uniquement le mot en cour si nessaire
+       //( on est sur un neud fin d'un mot et on a fini de parcourir les caractères)
+            list.push_back(prev);
+        search(node->center, prev, list, str, wildcard);
+    }
+}

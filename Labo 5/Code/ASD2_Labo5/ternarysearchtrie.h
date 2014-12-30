@@ -15,6 +15,8 @@ private:
         int nodeHeight; // hauteur du sous-arbre dont ce noeud est la racine.
         bool isEnd;
         Node(char value) : value(value), right(nullptr), center(nullptr), left(nullptr), nodeHeight(0), isEnd(false) { }
+        // On pourrais gerer la suppression en recursion ici au lieu de le faire via une fonction membre de TernarySearchTrie
+        ~Node() {}
     };
 
     // Racine de l'arbre.
@@ -27,17 +29,19 @@ public:
     TernarySearchTrie();
     ~TernarySearchTrie();
 
-    void put( const char* key);
-    void deleteElement( const char* key);
+    void put(const std::string& s) { put(s.c_str()); }
+    void put(const char* key);
+
+    void deleteElement(const std::string& s) { deleteElement(s.c_str()); }
+    void deleteElement(const char* key);
     int height();
+
+    bool contains(const std::string& s) const { return contains(s.c_str()); }
     bool contains(const char* key) const;
     size_t size() const;
 
-    std::list<std::string> search(const char* str, char wildcard = '*') const {
-        std::list<std::string> list;
-        search(root, "", list, str, wildcard);
-        return list;
-    }
+    std::list<std::string> search(const std::string& s, char wildcard = '*') const { return search(s.c_str(), wildcard); } // pas de copie double de la liste cat utilisation de && (optimisation c++11)
+    std::list<std::string> search(const char* str, char wildcard = '*') const;
 
     template < typename Fn >
     void visitInOrder ( Fn f) {
@@ -56,20 +60,7 @@ private:
     Node* deleteElement( Node* x, const char* key);
     Node* put(Node* x, const char* str);
 
-    void search(Node* node, std::string prev, std::list<std::string>& list, const char *str, char wildcard) const {
-        if (!node || !*str)
-            return;
-        search(node->left, prev, list, str, wildcard);
-        search(node->right, prev, list, str, wildcard);
-
-        if (*str == wildcard || node->value == *str) {
-            ++str;
-            prev.push_back(node->value);
-            if (node->isEnd && !*str)
-                list.push_back(prev);
-            search(node->center, prev, list, str, wildcard);
-        }
-    }
+    void search(Node* node, std::string prev, std::list<std::string>& list, const char *str, char wildcard) const;
 
     void deleteSubTree(Node* x);
 
