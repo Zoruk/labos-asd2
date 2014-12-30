@@ -1,7 +1,8 @@
 #ifndef TERNARYSEARCHTRIEBIS_H
 #define TERNARYSEARCHTRIEBIS_H
 
-#include <algorithm>
+#include<list>
+#include<string>
 
 class TernarySearchTrie {
 private:
@@ -21,6 +22,7 @@ private:
 
     // On ne peux pas traiter la taille de la meme manière que ceux des arbres avl
     size_t _size;
+
 public:
     TernarySearchTrie();
     ~TernarySearchTrie();
@@ -30,6 +32,12 @@ public:
     int height();
     bool contains(const char* key) const;
     size_t size() const;
+
+    std::list<std::string> search(const char* str, char wildcard = '*') const {
+        std::list<std::string> list;
+        search(root, "", list, str, wildcard);
+        return list;
+    }
 
     template < typename Fn >
     void visitInOrder ( Fn f) {
@@ -47,6 +55,21 @@ private:
     Node* rotateLeft(Node* x);
     Node* deleteElement( Node* x, const char* key);
     Node* put(Node* x, const char* str);
+
+    void search(Node* node, std::string prev, std::list<std::string>& list, const char *str, char wildcard) const {
+        if (!node || !*str)
+            return;
+        search(node->left, prev, list, str, wildcard);
+        search(node->right, prev, list, str, wildcard);
+
+        if (*str == wildcard || node->value == *str) {
+            ++str;
+            prev.push_back(node->value);
+            if (node->isEnd && !*str)
+                list.push_back(prev);
+            search(node->center, prev, list, str, wildcard);
+        }
+    }
 
     void deleteSubTree(Node* x);
 

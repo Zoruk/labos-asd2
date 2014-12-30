@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "ternarysearchtrie.h"
 
 TernarySearchTrie::Node* TernarySearchTrie::deleteAndReturn( Node* del, Node* ret) {
@@ -181,8 +183,9 @@ TernarySearchTrie::Node* TernarySearchTrie::deleteElement( Node* x, const char* 
         }
     }
 
-    if (x->center == nullptr) {
-        // Hum how to do that
+    // TODO delete un needed elements
+    if (x->center == nullptr && !x->isEnd) {
+
     }
 
     return restoreBalance(x);

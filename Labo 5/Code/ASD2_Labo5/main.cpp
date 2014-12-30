@@ -20,6 +20,11 @@ int main()
     dTST.load("Data/dictionary.txt", true);
     dSTL.load("Data/dictionary.txt", true);
 
+    std::list<std::string> result = dTST.getContainer().search("h*l**");
+    for(auto& s: result) {
+        std::cout << s << endl;
+    }
+
     cout << dTST.size() << " " << dSTL.size() << endl;
 
     SpellingChecker spellingcheckerTST("Data/input_sh.txt", dTST);
